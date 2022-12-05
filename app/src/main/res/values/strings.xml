@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Hows The Sky</string>
+    <string name="weather_temp_text">23 &#176;C</string>
+    <string name="weather_desc_text">Thunderstorm</string>
+    <string name="city_name">Chernihiv</string>
+    <string name="weather_image_desc">Image for weather of the City</string>
+    <string name="text_filed_hint">Enter City</string>
+    <string name="button_check_weather">CHECK WEATHER</string>
+    <string name="current_weather_title">Current Weather</string>
+    <string name="recent_cities_title">Recent Cities</string>
+    <string name="weather_detail_title">Weather Detail</string>
+    <string name="recent_cities_list" />
+    <string name="to_current_weather">Current Weather</string>
+    <string name="entered_city_name" />
+    <string name="button_recent_cities">Recent  Cities  Viewed</string>
+    <string name="recent_cities_heading">LIST OF CITIES SEARCHED</string>
+    <string name="text_temperature">Temperature:</string>
+    <string name="weather_text">Weather:</string>
+    <string name="display_mode_option">Dark Mode</string>
+    <string name="basic_details_sub">Basic Details:</string>
+    <string name="feels_like_heading_text">Feels Like:</string>
+    <string name="other_details_sub">Other Details:</string>
+    <string name="min_temp_heading_text">Minimum \nTemperature:</string>
+    <string name="max_temp_heading_text">Maximum \nTemperature:</string>
+    <string name="humidity_heading_text">Humidity:</string>
+    <string name="wind_speed_heading_text">Wind Speed:</string>
+    <string name="cloudiness_heading_text">Cloudiness:</string>
+    <string name="visibility_heading_text">Visibility:</string>
+    <string name="more_details"><u>More Details</u></string>
+    <string name="no_info">N/A</string>
+</resources>

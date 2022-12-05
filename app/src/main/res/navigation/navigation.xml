@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/currentWeatherFragment">
+
+    <fragment
+        android:id="@+id/currentWeatherFragment"
+        android:name="com.example.howsthesky.currentweather.CurrentWeatherFragment"
+        android:label="@string/current_weather_title"
+        tools:layout="@layout/fragment_current_weather">
+        <action
+            android:id="@+id/action_currentWeatherFragment_to_recentCitiesFragment"
+            app:destination="@id/recentCitiesFragment"
+            app:enterAnim="@anim/right_bottom_in"
+            app:exitAnim="@anim/right_bottom_out"
+            app:popEnterAnim="@anim/right_bottom_in"
+            app:popExitAnim="@anim/right_bottom_out"
+            app:popUpTo="@id/currentWeatherFragment"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_currentWeatherFragment_to_weatherDetailFragment"
+            app:destination="@id/weatherDetailFragment"
+            app:enterAnim="@anim/left_bottom_in"
+            app:exitAnim="@anim/left_bottom_out"
+            app:popEnterAnim="@anim/left_bottom_in"
+            app:popExitAnim="@anim/left_bottom_out"
+            app:popUpTo="@id/currentWeatherFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/recentCitiesFragment"
+        android:name="com.example.howsthesky.recentcities.RecentCitiesFragment"
+        android:label="@string/recent_cities_title"
+        tools:layout="@layout/fragment_recent_cities" >
+        <action
+            android:id="@+id/action_recentCitiesFragment_to_currentWeatherFragment"
+            app:destination="@id/currentWeatherFragment"
+            app:enterAnim="@anim/right_bottom_in"
+            app:exitAnim="@anim/right_bottom_out"
+            app:popEnterAnim="@anim/right_bottom_in"
+            app:popExitAnim="@anim/right_bottom_out"
+            app:popUpTo="@id/currentWeatherFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/weatherDetailFragment"
+        android:name="com.example.howsthesky.weatherdetail.WeatherDetailFragment"
+        android:label="@string/weather_detail_title"
+        tools:layout="@layout/fragment_weather_detail">
+        <action
+            android:id="@+id/action_weatherDetailFragment_to_currentWeatherFragment"
+            app:destination="@id/currentWeatherFragment"
+            app:enterAnim="@anim/left_bottom_in"
+            app:exitAnim="@anim/left_bottom_out"
+            app:popEnterAnim="@anim/left_bottom_in"
+            app:popExitAnim="@anim/left_bottom_out"
+            app:popUpTo="@id/currentWeatherFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="cityName"
+            app:argType="string" />
+    </fragment>
+</navigation>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="weather_image_height">200dp</dimen>
+    <dimen name="weather_image_width">200dp</dimen>
+    <dimen name="weather_temp_text_size">32sp</dimen>
+    <dimen name="button_text_size">18sp</dimen>
+    <dimen name="city_text">19sp</dimen>
+    <dimen name="recent_cities_heading_text">24sp</dimen>
+    <dimen name="text_size_large">32sp</dimen>
+    <dimen name="sub_heading_size">26sp</dimen>
+    <dimen name="weather_detail_text">18sp</dimen>
+    <dimen name="small_padding">6sp</dimen>
+    <dimen name="medium_text_size">16sp</dimen>
+</resources>

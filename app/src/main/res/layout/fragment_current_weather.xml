@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="cityClass"
+            type="com.example.howsthesky.CityClass" />
+        <variable
+            name="currentWeatherViewModel"
+            type="com.example.howsthesky.currentweather.CurrentWeatherViewModel" />
+        <variable
+            name="cityWeather"
+            type="com.example.howsthesky.helper.Weather" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ConstraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".currentweather.CurrentWeatherFragment">
+
+            <ImageView
+                android:id="@+id/weather_image"
+                android:layout_width="@dimen/weather_image_width"
+                android:layout_height="@dimen/weather_image_height"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:contentDescription="@string/weather_image_desc"
+                app:imageId="@{currentWeatherViewModel.weatherData.weatherDescList[0].iconId}"
+                app:layout_constraintBottom_toTopOf="@+id/weather_temp_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@mipmap/unknown_weather" />
+
+            <TextView
+                android:id="@+id/weather_temp_text"
+                style="@style/text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="@={cityClass.temperature}"
+                android:textSize="@dimen/weather_temp_text_size"
+                app:layout_constraintBottom_toTopOf="@+id/weather_desc_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/weather_image" />
+
+            <TextView
+                android:id="@+id/weather_desc_text"
+                style="@style/text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="@={cityClass.temp_description}"
+                app:layout_constraintBottom_toTopOf="@+id/city_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/weather_temp_text" />
+
+            <TextView
+                android:id="@+id/city_text"
+                style="@style/text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="@={cityClass.city}"
+                app:layout_constraintBottom_toTopOf="@+id/more_details_option"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/weather_desc_text" />
+
+            <TextView
+                android:id="@+id/more_details_option"
+                style="@style/text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="24dp"
+                android:onClick="@{() -> currentWeatherViewModel.onMoreDetailsClicked()}"
+                android:text="@string/more_details"
+                android:textSize="@dimen/medium_text_size"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@+id/filledTextField"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/city_text" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/filledTextField"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:hint="@string/text_filed_hint"
+                app:boxStrokeColor="@color/app_theme"
+                app:layout_constraintBottom_toTopOf="@+id/button_check_weather"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/more_details_option">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/city_edit_text"
+                    style="@style/text_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapSentences"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/button_check_weather"
+                style="@style/text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="24dp"
+                android:text="@string/button_check_weather"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/button_color"
+                app:layout_constraintBottom_toTopOf="@+id/button_to_recent_cities"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/filledTextField" />
+
+            <Button
+                android:id="@+id/button_to_recent_cities"
+                style="@style/navigation_button_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="16dp"
+                android:onClick="@{() -> currentWeatherViewModel.onRecentCitiesButtonClicked()}"
+                android:text="@string/button_recent_cities"
+                app:backgroundTint="@color/button_color"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button_check_weather" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

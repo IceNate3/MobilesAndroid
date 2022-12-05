@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="cityWeather"
+            type="com.example.howsthesky.helper.Weather" />
+        
+        <variable
+            name="clickListener"
+            type="com.example.howsthesky.helper.RecentCitiesListener" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/list_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> clickListener.onClick(cityWeather)}">
+
+        <ImageView
+            android:id="@+id/city_weather_image"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            app:imgId="@{cityWeather}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/text_temperature"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@mipmap/unknown_weather" />
+
+        <TextView
+            android:id="@+id/city_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            tools:text="Chernihiv"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/city_text"
+            app:cityName="@{cityWeather}"
+            app:layout_constraintBottom_toTopOf="@+id/text_temperature"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/city_weather_image"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/text_temperature"
+            android:textColor="@color/text_color"
+            app:layout_constraintBottom_toTopOf="@+id/text_weather"
+            app:layout_constraintEnd_toStartOf="@+id/temperature_value"
+            app:layout_constraintStart_toEndOf="@+id/city_weather_image"
+            app:layout_constraintTop_toBottomOf="@+id/city_name"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/text_weather"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/weather_text"
+            android:textColor="@color/text_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/city_weather_image"
+            app:layout_constraintTop_toBottomOf="@+id/text_temperature"
+             />
+
+        <TextView
+            android:id="@+id/temperature_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            tools:text="25 °C"
+            android:textColor="@color/text_color"
+            app:cityTemperature="@{cityWeather}"
+            app:layout_constraintBaseline_toBaselineOf="@+id/text_temperature"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/text_temperature" />
+
+        <TextView
+            android:id="@+id/weather_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="19dp"
+            tools:text="Thunderstorm"
+            android:textColor="@color/text_color"
+            app:weatherDescription="@{cityWeather}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/text_weather"
+            app:layout_constraintTop_toBottomOf="@+id/text_temperature" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
